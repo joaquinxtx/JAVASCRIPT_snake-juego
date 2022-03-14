@@ -1,0 +1,361 @@
+/*let mago=1
+let guerrero=2
+let espadachin =3
+let bombardero =4
+let salir =0
+let personajes = parseInt(prompt(`seleccione un personaje
+    ${mago})MAGO
+    ${guerrero})GUERRERO
+    ${espadachin})ESPADACHIN
+    ${bombardero})BOMBARDERO
+    ${salir})SALIR`))
+
+do{
+    if(personajes == mago){
+        alert("has seleccionado mago")
+    }
+    else if (personajes == guerrero ){
+        alert("has seleccionado guerrero")
+    }
+    else if (personajes == espadachin ){
+        alert("has seleccionado espadachin")
+    }
+    else if (personajes == bombardero ){
+        alert("has seleccionado bombardero")
+    }
+    else if (personajes == salir ){
+        alert("gracias por jugar")
+    }
+    else{
+        alert("no existe esa opcion")
+    }
+}while (false ) {
+} */
+// function saludo(nombre , apellido) {
+//     console.log("hola " + nombre + apellido);
+
+// }
+// saludo("joaquin " ,"toledo")
+// let nombre = prompt("escriba el nombre del usuario")
+// let apellido = prompt("escriba el apellido del usuario")
+// let edad = prompt("escriba la edad del usuario")
+// console.log(nombre , apellido , edad )
+
+// const ciudad_1 = " cordoba"
+// const ciudad_2 = " buenos aires "
+// const ciudad_3 = " salta"
+// const ciudad_4 = " entre rios"
+// const ciudad_5 = " jujuy"
+
+// let nombre="joaquin "
+// let apellido = "toledo "
+// let edad = 18
+
+// let carnet = nombre + apellido + edad + ciudad_1
+// console.log(carnet)
+// let persona_1 = prompt("escriba el nombre de la persona: ")
+// let persona_2 = prompt("escriba el nombre de la persona: ")
+// let persona_3 = prompt("escriba el nombre de la persona: ")
+// let persona_4 = prompt("escriba el nombre de la persona: ")
+// let persona_5 = prompt("escriba el nombre de la persona: ")
+
+// let familia = persona_1 +" " + persona_2 +" " + persona_3+ " " +persona_4 +" " +persona_5
+// alert(familia)
+
+// let numero = parseFloat(prompt("dame un numero y le sacare el 20%"));
+
+// let porsentaje = 20 * numero / 100;
+// alert(porsentaje)
+
+// let sobra =  numero - porsentaje;
+// alert(sobra)
+// let nombre = prompt("escriba un nombre ")
+// let nombre_correcto = "joaquin"
+
+// if (nombre == nombre_correcto){
+//     console.log("fui yo")
+// }else{
+//     console.log("no fui yo")
+// }
+
+// let tecla = prompt("escriba y o Y")
+
+// if ( tecla == "y" || tecla=="Y" ){
+//     console.log("es correcto")
+// }else{
+//     console.log("es incorrecto")
+// }
+
+// let numero = parseInt(prompt("elije ub personaje 1)homero 2)marge 3)lisa 4)bart"))
+// if(numero == 1 ){
+//     alert("has seleccionado a homero")
+// }else if (numero == 2){
+//     alert("has seleccionado a marge")
+// }else if (numero == 3 ){
+//     alert("has seleccionado a lisa") 
+// }else if ( numero == 4){
+//     alert("has seleccionado a bart")
+// }else{
+//     alert("esa no es una opcion correcta4")
+// }
+
+// let numero =parseFloat(prompt("escriba un numero "))
+
+// if ((numero >= 0) && (numero <= 1000)){
+//     alert("presupuesto bajo")
+// }else if ( (numero >= 1001) && (numero <= 3000)){
+//     alert("presupuesto medio ")
+// }else if (numero >3001){
+//     alert("presupuesto alto")
+// }else{
+//     alert("estas en numeros rojos")
+// }
+
+// let producto1 = prompt("escriba un producto")
+// let producto2 = prompt("escriba un producto")
+// let producto3 = prompt("escriba un producto")
+// let producto4 = prompt("escriba un producto")
+// if ((producto1 != "") && (producto2!= "") &&(producto3!= "") && (producto4!="")){
+//     let heladera="1) "+producto1+ " "+
+//     "2) "+producto2+ " "+
+//     "3) "+producto3+ " "+
+//     "4) "+producto4+" ";
+//  console.log(heladera)   
+// }else{
+//     console.log("error")}
+// let numero = parseInt (prompt("ingrese un numero "))
+// let text0 = prompt("ingrese un texto")
+
+// for (i = 0 ; i < numero ; i++){
+//     console.log(texto)
+// }
+
+// let lado =parseInt(prompt("ingrese un numero"))
+
+// for (i = 0 ; i < lado; i++ ){
+//     if(i >3){
+//         break;
+//     }
+//     alert("lado")
+// }
+
+// for (i = 0 ; i < 10 ; i++){
+//     let alumnos = prompt("ingrese a sus alumnos")
+//     console.log(alumnos)
+// }
+
+// let entrada    = prompt("INGRESAR NOMBRE");
+// let ingresados = '';
+// while (entrada != 'Voldemort') {
+//     ingresados += entrada +"\n";
+//     entrada     = prompt("INGRESAR NOMBRE");
+// }
+// alert(ingresados);
+
+// let numero = prompt("selecione un numero:")
+//  while(numero != "ESC"){
+//      switch(numero){
+//          case "1":
+//              alert("tomate");
+//              break
+//          case "2":
+//              alert("papa");
+//              break
+//          case "3":
+//              alert("cebolla");
+//              break
+//          case "4":
+//              alert("pollo");
+//              break
+//          default:
+//              alert("error") ;              
+//      }
+//      numero=prompt("seleccione un numero del 1 al 4")
+//  }
+// function entrada(){
+//     return prompt("ingresar dato")
+
+// }
+// function procesamiento(valor){
+//     return "la entrada es "+valor
+// }
+// function salida (valor){
+//     alert(valor)
+// }
+// salida(procesamiento(entrada()))
+
+// function entrada(valor){
+//     return Math.round(valor)
+// }
+
+
+// for( let i=0 ; i < 6 ; i++){
+//     let redondeo = prompt("ingresar num")
+//     alert(entrada(redondeo))
+   
+// }
+
+// function impuestos(precio ,porsentaje){
+//     return precio + ((porsentaje *precio )/100)
+// }
+
+// for (let i=0 ; i<5 ; i++){
+//     let resultado =impuestos(parseFloat(prompt("ingresar pecion")) ,
+//     parseFloat(prompt("ingresar porcentaje "))) 
+//     alert(resultado)
+// }
+
+// function validacion(cadena){
+//    return cadena != ""
+        
+// }
+// let entrada = prompt ("ingresar cadena")
+// while (entrada != "esc"){
+//     alert(validacion(entrada))
+//     entrada = prompt("ingresar cadena")
+// }
+
+
+
+
+// calcular el promedio de 6 alumnos
+
+// function promedio(nota1,nota2,nota3){
+//     var nota1= parseInt(prompt("escriba su nota 1 al 10"))
+    
+//     var nota2= parseInt(prompt("escriba su nota 1 al 10"))
+
+//     var nota3= parseInt(prompt("escriba su nota 1 al 10 1"))
+    
+//     let resultado_promedio = (nota1+nota2+nota3)/3
+    
+//     if(resultado_promedio <= 5){
+//         alert(`el promedio de su nota ${resultado_promedio} es bajo y pasa a ser desaprobado`)
+//     }else if((resultado_promedio>=6) && ( resultado_promedio <=9 )){
+//         alert(`el promedio de su nota ${resultado_promedio} es bueno y pasa a ser aprobado`)
+//     }else if (resultado_promedio == 10){
+//         alert(`el promedio de su nota ${resultado_promedio} es exelente y pasa a ser aprobado`)
+//     }else{
+//         alert("algo salio mal :(")
+//     }
+// }
+
+// let numero = parseInt(prompt("numeros de alumnos"))//numero de alumnos que quieres sacar el promedio
+
+// for (let i = 0 ;i < numero; i++){
+//     promedio()
+    
+// }
+// alert("que tengas buen dia :)")
+
+
+       //funcion constructora     la funcien constructira se le da el nombre con la primera letra en mayuscula
+
+// class Persona{
+//     constructor(nombre , apellido , edad , dni , cuenta_bancaria){
+//         this.nombre =nombre
+//         this.apellido = apellido
+//         this.edad= edad
+//         this.dni=dni
+//         this.cuenta_bancaria=cuenta_bancaria
+//     }
+//     saludar(){
+//         console.log(`hola mi nombre es ${this.nombre} te estoy saludando`)
+
+//     }
+//     deposito(can_deposito){
+//         this.cuenta_bancaria+=can_deposito  /*esto sirve como acumulador*/
+//     }
+// }
+
+// class Tienda{
+//     constructor(nombre_tienda,direccion,propietario,rubro_tienda){
+//         this.nombre_tienda= nombre_tienda
+//         this.direccion=direccion
+//         this.propietario=propietario
+//         this.rubro_tienda=rubro_tienda
+//     }
+//     esta_abierto(hora){
+//         if(( (hora>=8) && (hora <=12)) || (hora>=15)&& (hora<=15)){
+//             return true
+//         }else{
+//             return false
+//         }
+
+//     }
+// }
+
+// let ingresados=''
+// for(let index = 0 ;index<5 ; ++index){
+//     let tienda = new Tienda(
+//         prompt("ingrese el nombre de la tienda: "),
+//         prompt("ingrese la direccion de la tienda: "),
+//         prompt("quien es el propietario de la tienda"),
+//         prompt("de que es la tienda")
+//     )
+//     acumulador
+//     ingresados+=`tienda : ${tienda.nombre_tienda}
+//      direccion: ${tienda.direccion} 
+//      propietario: ${tienda.propietario} 
+//      rubro: ${tienda.rubro_tienda} "\n"`
+// }
+//  const tienda = new Tienda("goch","calle 123", "jorgito", "ropa")
+
+//  for(let i= 0;i< 3;++i){
+//      let entrada = parseInt(prompt("selecciones una hora:"))
+//      if(tienda.esta_abierto(entrada)){
+//          alert("la tienda esta abierta "+entrada)
+//      }else {alert("la tienda esta cerrada "+entrada)
+//         }
+//  } 
+
+// 
+
+// const gato = {
+//     nombre: "sr-gato",
+//     duerme: true,
+//     edad: 10 ,
+//     enemigos: ["perros","agua"],
+//     comer(alimento){
+//         console.log(`
+//            ${this.nombre} esta comiendo ${alimento}`)
+//     },
+//     listarEnemigos(){
+//         this.enemigos.forEach((item)=> console.log(item))
+//     },
+// };
+
+//                           value , devuelve valores numericos del objeto
+// console.log(Object.values(gato));
+// Object.values(gato).forEach((item)=> console.log(item))
+// for (let propiedad in gato){
+//     console.log(gato[propiedad])
+
+// }
+  
+
+
+    //  DOM 
+function capturar(){
+    function Jugador(nombre , apellido , alias ){
+            this.nombre =nombre
+            this.apellido=apellido
+            this.alias = alias        
+        }
+        var nombre_capturado=document.getElementById("nombre").value;
+        
+        var apellido_capturado = document.getElementById("apellido").value;
+        
+        var alias_capturada = document.getElementById("alias").value;
+        
+        let nuevo_jugador = new Jugador(nombre_capturado,apellido_capturado,alias_capturada)
+        console.log(nuevo_jugador)
+        agregar();
+             
+};
+let nombres_guardados= []
+function agregar(){
+    nombres_guardados.push(nuevo_jugador);
+    console.log(nombres_guardados)
+    let tabla = document.getElementById("tabla").innerHTML += `<tbody><td>`+nuevo_jugador.nombre+`</td><td>`+nuevo_jugador.apellido+`</td><td>`+nuevo_jugador.alias+`</td></tbody>`;
+};

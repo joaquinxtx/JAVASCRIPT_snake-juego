@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="juegos, games , retro , tech ,snake">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+
+    <title>Juego JDev🕹️</title>
+</head>
+<body>
+    <header>
+        <nav class="nav">
+            <div>
+                <h1 class="titulo" >
+                    JDev🕹️ 
+                </h1>
+            </div>
+        </nav>
+        
+    </header>
+    <main>
+        <section class="contenedor">
+            <div class="titulo-2">
+                <h2 >
+                    Juego retro Snake 🐍
+                </h2>          
+            </div>
+        
+        <section class="contenedor">
+            <div class="contenedor-j">
+                <div class="contenedor-juego">
+                    <div class="color">
+                        <label for="inputColor" class="form-label"></label>
+                        <input type="color" class="form-control " id="inputColor" value="#563d7c" title="elige un color">
+                        <button class="btn" id="btn-vusualizar">Visualizar🐍</button>
+                    </div>
+                    <canvas id="lienzo" class="paredes">
+                    </canvas>
+                    <div class="botonera">
+                        <button class="botones boton-w">W👆🏻</button>
+                        <button class="botones boton-d">D👉🏻</button>
+                        <button class=" botones-pausa">P✋🏻</button>
+                        <button class="botones boton-s">S👇🏻</button>
+                        <button class="botones boton-a">A👈🏻</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="contenedor">
+            <div class="titulo-2">
+                <h2 >
+                    Score🧠🚀
+                </h2>               
+            </div>
+            <div>
+                <form class="form" id="formulario">
+                    <input class="formulario" id="nombreId" type="text" placeholder="Nombre" >
+                    <input class="formulario" id="apellidoId" type="text" placeholder="Apellido" >
+                    <input class="formulario" id="aliasId" type="text" placeholder="Alias">
+                    <button class=" formulario-btn" id="botonId" type="submit" >Agregar</button>
+                </form>
+            </div>
+            <div class="score-juego">
+                <table class="table" id="tabla">
+                    <thead class="thead-inverse">
+                        <tr>
+                            <th class="th">Nombre</th>
+                            <th class="th">Apellido</th>
+                            <th class="th">Alias</th>
+                            <th class="th">Score</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table" id="table">
+                        <td class="th">joaquin</td>
+                        <td class="th">toledo</td>
+                        <td class="th">jotaking</td>
+                        <td class="th">22</td>
+                    </tbody>                    
+                </table>
+            </div>
+            <template id="template">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Alias</th>
+                    <th>score</th>
+                </tr>
+            </template>
+        </section>
+    </main>
+    <footer class="pie">
+        <div class="grupo-1">
+            <div class="box">
+                <div class="redes-sociales">
+                    <a href="#" class="favicon">
+                        
+                        <img src="/img/facebook.png" class="redes" alt="">
+                        Facebook🧑🏻
+                    </a>
+                    <a href="#" class="favicon">
+                        
+                        <img src="/img/instagram.png" class="redes" alt="">
+                        Instagram📷
+                    </a>
+                    <a href="#" class="favicon">
+                        
+                        <img src="/img/gmail.png" class="redes" alt="">
+                        Gmail📩
+                    </a>
+                    <a href="#" class="favicon">
+                        
+                        <img src="/img/github.png" class="redes" alt="">
+                        Github💻
+                    </a>
+                    <a href="#" class="favicon">                       
+                        <img src="/img/linkedin.png" class="redes" alt="">
+                        Linkedin👓
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="grupo-2">
+            <small>&copy;2022 <b>JDev</b> - Todos los Derechos Reservados</small>
+        </div>
+
+
+    </footer>
+    <script src="../script.js"></script>
+</body>
+</html>
