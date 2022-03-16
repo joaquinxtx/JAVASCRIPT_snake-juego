@@ -12,11 +12,8 @@ class Usuarios {
 let usuariosGuardados =[]
 console.log()
 
-if(localStorage.getItem('Users')){
-    usuariosGuardados =JSON.parse(localStorage.getItem('Users'))
-}else{
-    localStorage.setItem('Users', JSON.stringify(usuariosGuardados))
-}
+//operador Ternario
+localStorage.getItem('Users') ? usuariosGuardados =JSON.parse(localStorage.getItem('Users')) : localStorage.setItem('Users', JSON.stringify(usuariosGuardados))
 
 formularios.addEventListener('submit',(e) => {
     e.preventDefault()
