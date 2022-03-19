@@ -219,7 +219,7 @@ header{
 }
 
 .paredes{   
-    background-color: rgba(6, 7, 6, 0.842);
+    
     box-shadow:0px 0px 70px 0px  rgb(35, 194, 243);
     width: 300px;
     height: 300px;
@@ -256,6 +256,13 @@ header{
     background-color: rgb(139, 13, 13);
     margin: 0;
     
+}
+.score-dinamico{
+    position: relative;
+    top: 20px;
+}
+.score-dinamico p{
+    padding-top: 5px;
 }
 .boton-w{
     position: relative;

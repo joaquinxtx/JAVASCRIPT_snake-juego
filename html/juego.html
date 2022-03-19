@@ -39,15 +39,21 @@
                         <label for="inputColor" class="form-label"></label>
                         <input type="color" class="form-control " id="inputColor" value="#563d7c" title="elige un color">
                         <button class="btn" id="btn-vusualizar">Visualizar🐍</button>
+                        <div class="score-dinamico">
+                            <h4>
+                                Score
+                            </h4>
+                            <p id="score-snake">0</p>
+                        </div>
                     </div>
                     <canvas id="lienzo" class="paredes">
                     </canvas>
                     <div class="botonera">
-                        <button class="botones boton-w">W👆🏻</button>
-                        <button class="botones boton-d">D👉🏻</button>
-                        <button class=" botones-pausa">P✋🏻</button>
-                        <button class="botones boton-s">S👇🏻</button>
-                        <button class="botones boton-a">A👈🏻</button>
+                        <button class="botones boton-w" id="arriba">W</button>
+                        <button class="botones boton-d" id="derecha">D</button>
+                        <button class=" botones-pausa" id="restart">▶</button>
+                        <button class="botones boton-s" id="abajo">S</button>
+                        <button class="botones boton-a" id="izquierda">A</button>
                     </div>
                 </div>
             </div>
@@ -130,7 +136,8 @@
         </div>
 
 
-    </footer>
+    </footer>   
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
     <script src="../script.js"></script>
 </body>
 </html>
