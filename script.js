@@ -78,15 +78,6 @@ function lineasBorde(x,y){
 
 
 
-
-
-
-
-
-
-
-
-
 const formularios = document.getElementById('formulario')
 const botonUser = document.getElementById('botonId')
 
