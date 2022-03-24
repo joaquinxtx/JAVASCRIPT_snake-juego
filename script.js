@@ -1,121 +1,253 @@
-//canvas y contexto 2d
-const lienzo = document.getElementById("lienzo")
-const ctx=lienzo.getContext("2d")
+const canvas =document.getElementById('canvas');
+const ctx=canvas.getContext('2d')  
 
-//dibujosnake snake +posiciones
-let posX = 50 , posY=50;
-
-function personajeSnake(){
-  ctx.rect(posX,posY,10,5);
+class SnakePartes{
+  constructor(x,y){
+    this.x=x;
+    this.y=y;
+  }
 }
 
-//paredes(tope) y velocidad snake 
-let direccionX=1;//direccion de los ejes
-let direccionY=0;
-let velocidadX = 1;
-let velocidadY = 0.6;
-function direccionesSnake(){
-  if(posX >= 5 && posX <= (300-16)){
-    posX= posX +direccionX*velocidadX
+
+let velocidad = 9
+
+let rencuentroCanvas= 15
+let cuerpo = canvas.width/rencuentroCanvas -7
+let cuerpoEnemigo=canvas.width/rencuentroCanvas -2
+let cabezaX=7
+let cabezaY=7
+const snakeCuerpo =[];
+let cola =0
+let comidaX=5
+let comidaY=5
+let enemigoX=12
+let enemigoY=15
+let velocidadX =0
+let velocidadY=0
+let bordeX=0
+let bordeY=0
+let direccionX=1
+let direccionY=0
+let score=0
+
+function drawJuego(){
+  direccionesSnake()
+  let resultado= paredesChoques();
+  if(resultado){
+    return;
+  }
+  clearCanvas()
+  dibujarSnake()
+  dibujarComida()
+  dibujarEnemigo()
+  ataqueEnemigo()
+  dibujarParedes() 
+  comer()
+  setTimeout(drawJuego,1000/velocidad)
+}
+
+function clearCanvas(){
+  ctx.fillStyle='black'
+  ctx.fillRect(0,0,canvas.width,canvas.height)
+}
+
+function dibujarSnake(){
+  ctx.fillStyle='green'
+  ctx.fillRect(cabezaX*rencuentroCanvas,cabezaY*rencuentroCanvas,cuerpo,cuerpo)
+
+  ctx.fillStyle='green'
+  for(let i=0;i<snakeCuerpo.length;i++){
+    let partes=snakeCuerpo[i]
+    ctx.fillRect(partes.x*rencuentroCanvas,partes.y*rencuentroCanvas,cuerpo,cuerpo)
+  }
+  snakeCuerpo.push(new SnakePartes(cabezaX,cabezaY))
+  if(snakeCuerpo.length>cola){
+    snakeCuerpo.shift();
+  }
+}
+function dibujarComida(){
+  ctx.fillStyle = 'yellow'
+  ctx.fillRect (comidaX*rencuentroCanvas,comidaY*rencuentroCanvas,cuerpo,cuerpo)
+}
+function comer(){
+  if(comidaX===cabezaX && comidaY === cabezaY){
+      comidaX = Math.floor(Math.random()*rencuentroCanvas)
+      comidaY = Math.floor(Math.random()*rencuentroCanvas)
+      cola++
+      score++
+  }
+}
+function dibujarEnemigo(){ 
+  ctx.fillStyle='red'
+  ctx.fillRect (enemigoX*rencuentroCanvas,enemigoY*rencuentroCanvas,cuerpoEnemigo,cuerpoEnemigo)
+  
+}
+function ataqueEnemigo(){
+  if(comidaX===cabezaX && comidaY === cabezaY){
     
-  }else{
-    console.log('juego terminado')
-    noLoop()
+      enemigoX = Math.floor(Math.random()*rencuentroCanvas)
+      enemigoY = Math.floor(Math.random()*rencuentroCanvas)
+    
   }
   
-  if(posY >= 5 && posY <= (138)){
-    posY = posY +direccionY*velocidadY
-  }else{
-    console.log('juego terminado')
-    noLoop()
-  } 
-}
-
-//sistemas de choques 
-
-//movimientos
-function keyPressed(){
-  switch(keyCode){
-    case LEFT_ARROW:
-      posX -= 1;
-      direccionX=-1;
-      direccionY=0;
-      break;
-    case  RIGHT_ARROW:
-      posX +=  1;
-      direccionX=+1;
-      direccionY=0;
-      break;
-    case  UP_ARROW :
-      posY -= 1;
-      direccionY=-1;
-      direccionX=0;
-      break; 
-    case DOWN_ARROW:
-      posY += 1;
-      direccionY=+1;
-      direccionX=0;
-      break;    
-  }
-}
-//paredes (dibujadas)
-function bordesCanvas(){
-  for(let iX = 0 ; iX<300 ; iX+=5){
-    lineasBorde(iX,0)
-  }
-  for(let iX = 0 ; iX<300 ; iX+=5){
-    lineasBorde(iX,145)
-  }
-  for(let iY = 0 ; iY<300 ; iY+=5){
-    lineasBorde(0,iY)
-  }
-  for(let iY = 0 ; iY<300 ; iY+=5){
-    lineasBorde(295,iY)
-  }
-}
-function lineasBorde(x,y){
-  ctx.rect(x,y,5,5)
-}
-
-//comida snake 
-function comida(x,y){
-  ctx.rect(x,y,10,5)  
-}
-function comidaSnake(){
-  comida(50 ,70)
-}
-
-
-//enemigo snake
-function enemigo(x,y){
-  ctx.triangle(x, y,  5, 5, 5);
-}
-function enemigoSnake(){
-  enemigo(70,65,75)
-}
-
-//loop del juego
-function draw(){
-  ctx.beginPath();
-  comidaSnake();
   
-  bordesCanvas();
-  personajeSnake();
-  ctx.clearRect(0,0,lienzo.width,lienzo.height);
-  ctx.stroke();
-  direccionesSnake(posX,posY);
-  
+
 }
+
+function direccionesSnake(){
+  cabezaX +=direccionX
+  cabezaY +=direccionY
+
+}
+function borde(bordeX,bordeY){
+  ctx.fillStyle='white'
+  ctx.fillRect(bordeX,bordeY,2,2)
+}
+function dibujarParedes(){
+  for(let iX=0;iX<canvas.width; iX+=0.5){
+    borde(iX,0)
+
+  }
+  for(let iX=0;iX<canvas.width ;iX+=0.5)
+    borde(iX,298)
+  for(let iY=0;iY<canvas.height; iY+=0.5){
+    borde(0,iY)
+  
+  }
+  for(let iY=0;iY<canvas.height ;iY+=0.5)
+     borde(298,iY)
+}
+
+//paredes
+function paredesChoques(){
+  let gameOver=false
+  if(cabezaX <0 ){
+    gameOver=true
+    swal("Game Over💀", "...Guarda tus datos abajo😉👾");
+  }else if(cabezaX >= 20 ){
+    gameOver=true
+    swal("Game Over💀", "...Guarda tus datos abajo😉👾");
+  }else if (cabezaY <0){
+    gameOver=true
+    swal("Game Over💀", "...Guarda tus datos abajo😉👾");   
+  }else if (cabezaY >=20){
+    gameOver=true
+    swal("Game Over💀", "...Guarda tus datos abajo😉👾");
+  }else if (cabezaX===enemigoX && cabezaY === enemigoY){
+    gameOver=true
+    swal("Game Over💀", "...Guarda tus datos abajo😉👾" );
+  }
+    return gameOver
+    
+}
+
+
+
+//mover la snake
+const arriba=document.getElementById("arriba")
+const derecha=document.getElementById("derecha")
+const restart=document.getElementById("restart")
+const abajo=document.getElementById("abajo")
+const izquierda=document.getElementById("izquierda")
+
+arriba.addEventListener("click",()=>{
+  if(direccionY==1){
+    return
+}  
+  direccionY = 1*-1
+  direccionX=0
+})
+abajo.addEventListener("click",()=>{
+  if(direccionY==-1){
+    return
+}
+
+direccionY = 1
+direccionX=0
+})
+restart.addEventListener("click",()=>{
+  drawJuego()
+})
+izquierda.addEventListener("click",()=>{
+  if(direccionX ==1){
+    return
+}
+
+direccionX =1*- 1
+direccionY=0
+})
+derecha.addEventListener("click",()=>{
+  if(direccionX==-1){
+    return
+}
+
+direccionX = 1
+direccionY=0
+})
+
+
+
+document.body.addEventListener('keyup',keyDown)
+
+function keyDown(event){
+  //arriba
+  if(event.keyCode==87){
+      if(direccionY==1){
+          return
+      }
+      
+      direccionY = 1*-1
+      direccionX=0
+  }
+  //abajo
+  if(event.keyCode==83){
+      if(direccionY==-1){
+          return
+      }
+     
+      direccionY = 1
+      direccionX=0
+  }
+  //derecha
+  if(event.keyCode==68){
+      if(direccionX==-1){
+          return
+      }
+     
+      direccionX = 1
+      direccionY=0
+  }
+  //izquierda
+  if(event.keyCode==65){
+      if(direccionX ==1){
+          return
+      }
+      
+      direccionX = 1*-1
+      direccionY=0
+  }
+  if(event.keyCode==13){
+    drawJuego()
+  }
+}
+
+
+
+const scoreSnake= document.getElementById("scoreSnake")
+scoreSnake.innerHTML=`<p>0</p>`
+
+//parte de score y nombres de los jugadores 
 
 const formularios = document.getElementById('formulario')
 const botonUser = document.getElementById('botonId')
 
 
 class Usuarios {
-    constructor(nombre ,apellido,alias){
+    constructor(nombre ,apellido,alias,scoreJuego){
         this.nombre=nombre
         this.apellido=apellido
         this.alias=alias
+        this.scoreJuego=scoreJuego
     }
 }
 let usuariosGuardados =[]
@@ -130,8 +262,9 @@ formularios.addEventListener('submit',(e) => {
     let nombre = document.getElementById('nombreId').value
     let apellido = document.getElementById('apellidoId').value
     let alias = document.getElementById('aliasId').value
+    let scoreJuego = score
 
-    const usuarioNuevo= new Usuarios (nombre,apellido,alias)
+    const usuarioNuevo= new Usuarios (nombre,apellido,alias,scoreJuego)
     usuariosGuardados.push(usuarioNuevo)
 
     localStorage.setItem('Users', JSON.stringify(usuariosGuardados))
@@ -143,6 +276,7 @@ formularios.addEventListener('submit',(e) => {
                                 <td id="usuario${indice}" class="th">${usuariosEnArray.nombre}</td>
                                 <td id="usuario${indice}" class="th">${usuariosEnArray.apellido}</td>
                                 <td id="usuario${indice}" class="th">${usuariosEnArray.alias}</td>
+                                <td id="usuario${indice}" class="th">${usuariosEnArray.scoreJuego}</td>
                             </tbody>`
      })
 })

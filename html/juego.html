@@ -37,15 +37,16 @@
                     <div class="color">
                         <label for="inputColor" class="form-label"></label>
                         <input type="color" class="form-control " id="inputColor" value="#563d7c" title="elige un color">
-                        <button class="btn" id="btn-vusualizar">Visualizar🐍</button>
-                        <div class="score-dinamico">
+                        <button class="btn" id="btn-vusualizar">Enter / ▶</button>
+                        <div class="scoreDinamico">
                             <h4>
                                 Score
                             </h4>
-                            <p id="score-snake">0</p>
+                            <p id="scoreSnake"></p>
                         </div>
                     </div>
-                    <canvas id="lienzo" class="paredes">
+                    <canvas id="canvas" class="canvas" width="300" height="300" >
+                        
                     </canvas>
                     <div class="botonera">
                         <button class="botones boton-w" id="arriba">W</button>
@@ -136,8 +137,7 @@
             <small>&copy;2022 <b>JDev</b> - Todos los Derechos Reservados</small>
         </div>
     </footer> 
-
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="../script.js"></script>
 </body>
 </html>
