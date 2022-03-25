@@ -30,6 +30,10 @@ let direccionX=1
 let direccionY=0
 let score=0
 
+const sonido =new Audio("/sanido-pop.mp3")
+const agregarSonido =new Audio("/agregar-sonido.mp3")
+const finish =new Audio("/finish.mp3")
+//motor del juego
 function drawJuego(){
   direccionesSnake()
   let resultado= paredesChoques();
@@ -41,7 +45,8 @@ function drawJuego(){
   dibujarComida()
   dibujarEnemigo()
   ataqueEnemigo()
-  dibujarParedes() 
+  dibujarParedes()
+  dibujarScore() 
   comer()
   setTimeout(drawJuego,1000/velocidad)
 }
@@ -52,10 +57,11 @@ function clearCanvas(){
 }
 
 function dibujarSnake(){
-  ctx.fillStyle='green'
+  ctx.fillStyle='gray'
   ctx.fillRect(cabezaX*rencuentroCanvas,cabezaY*rencuentroCanvas,cuerpo,cuerpo)
 
   ctx.fillStyle='green'
+  //logica del snake cuando comes
   for(let i=0;i<snakeCuerpo.length;i++){
     let partes=snakeCuerpo[i]
     ctx.fillRect(partes.x*rencuentroCanvas,partes.y*rencuentroCanvas,cuerpo,cuerpo)
@@ -66,15 +72,21 @@ function dibujarSnake(){
   }
 }
 function dibujarComida(){
-  ctx.fillStyle = 'yellow'
+  ctx.fillStyle = 'violet'
   ctx.fillRect (comidaX*rencuentroCanvas,comidaY*rencuentroCanvas,cuerpo,cuerpo)
 }
+function dibujarScore(){
+  scoreSnake.innerHTML=`<p>${score}</p>`
+}
+
+//funcion de como reaparece la comida
 function comer(){
   if(comidaX===cabezaX && comidaY === cabezaY){
       comidaX = Math.floor(Math.random()*rencuentroCanvas)
       comidaY = Math.floor(Math.random()*rencuentroCanvas)
-      cola++
-      score++
+      cola++;
+      score++ ;
+      sonido.play();
   }
 }
 function dibujarEnemigo(){ 
@@ -82,27 +94,24 @@ function dibujarEnemigo(){
   ctx.fillRect (enemigoX*rencuentroCanvas,enemigoY*rencuentroCanvas,cuerpoEnemigo,cuerpoEnemigo)
   
 }
-function ataqueEnemigo(){
-  if(comidaX===cabezaX && comidaY === cabezaY){
-    
-      enemigoX = Math.floor(Math.random()*rencuentroCanvas)
-      enemigoY = Math.floor(Math.random()*rencuentroCanvas)
-    
-  }
-  
-  
 
+function ataqueEnemigo(){
+  if(comidaX===cabezaX && comidaY === cabezaY){   
+      enemigoX = Math.floor(Math.random()*rencuentroCanvas)
+      enemigoY = Math.floor(Math.random()*rencuentroCanvas)   
+  }
 }
 
 function direccionesSnake(){
   cabezaX +=direccionX
   cabezaY +=direccionY
-
 }
+
 function borde(bordeX,bordeY){
-  ctx.fillStyle='white'
+  ctx.fillStyle='orange'
   ctx.fillRect(bordeX,bordeY,2,2)
 }
+
 function dibujarParedes(){
   for(let iX=0;iX<canvas.width; iX+=0.5){
     borde(iX,0)
@@ -121,29 +130,47 @@ function dibujarParedes(){
 //paredes
 function paredesChoques(){
   let gameOver=false
+
+  if(direccionY===0 && direccionX===0){
+    return false;
+  }
   if(cabezaX <0 ){
     gameOver=true
-    swal("Game Over💀", "...Guarda tus datos abajo😉👾");
+    swal("Game Over💀", "Chocaste🧱...Guarda tus datos abajo😉👾");
+    finish.play()
   }else if(cabezaX >= 20 ){
     gameOver=true
-    swal("Game Over💀", "...Guarda tus datos abajo😉👾");
+    swal("Game Over💀", "Chocaste🧱...Guarda tus datos abajo😉👾");
+    finish.play()
   }else if (cabezaY <0){
     gameOver=true
-    swal("Game Over💀", "...Guarda tus datos abajo😉👾");   
+    swal("Game Over💀", "Chocaste🧱...Guarda tus datos abajo😉👾"); 
+    finish.play()  
   }else if (cabezaY >=20){
     gameOver=true
-    swal("Game Over💀", "...Guarda tus datos abajo😉👾");
+    swal("Game Over💀", "Chocaste🧱...Guarda tus datos abajo😉👾");
+    finish.play()
   }else if (cabezaX===enemigoX && cabezaY === enemigoY){
     gameOver=true
-    swal("Game Over💀", "...Guarda tus datos abajo😉👾" );
+    swal("Game Over💀", "chocaste🔥...Guarda tus datos abajo😉👾" );
+    finish.play()
   }
-    return gameOver
+  for(let i =0;i<snakeCuerpo.length;i++){
+    let partes=snakeCuerpo[i]
+    if(partes.x===cabezaX && partes.y===cabezaY){
+      gameOver=true;
+      swal("Game Over💀", "Te comiste sol@😬...Guarda tus datos abajo😉👾" );
+      finish.play()
+      break;
+    }
+    
+  }
+  return gameOver
+    
     
 }
 
-
-
-//mover la snake
+//mover la snake con los botone (mas que nada para que lo prueben en sus celulares)
 const arriba=document.getElementById("arriba")
 const derecha=document.getElementById("derecha")
 const restart=document.getElementById("restart")
@@ -154,7 +181,7 @@ arriba.addEventListener("click",()=>{
   if(direccionY==1){
     return
 }  
-  direccionY = 1*-1
+  direccionY = -1
   direccionX=0
 })
 abajo.addEventListener("click",()=>{
@@ -173,7 +200,7 @@ izquierda.addEventListener("click",()=>{
     return
 }
 
-direccionX =1*- 1
+direccionX =- 1
 direccionY=0
 })
 derecha.addEventListener("click",()=>{
@@ -185,8 +212,7 @@ direccionX = 1
 direccionY=0
 })
 
-
-
+//mover snake con las teclas
 document.body.addEventListener('keyup',keyDown)
 
 function keyDown(event){
@@ -196,7 +222,7 @@ function keyDown(event){
           return
       }
       
-      direccionY = 1*-1
+      direccionY = -1
       direccionX=0
   }
   //abajo
@@ -223,7 +249,7 @@ function keyDown(event){
           return
       }
       
-      direccionX = 1*-1
+      direccionX = -1
       direccionY=0
   }
   if(event.keyCode==13){
@@ -232,15 +258,10 @@ function keyDown(event){
 }
 
 
-
-const scoreSnake= document.getElementById("scoreSnake")
-scoreSnake.innerHTML=`<p>0</p>`
-
 //parte de score y nombres de los jugadores 
-
+const scoreSnake= document.getElementById("scoreSnake")
 const formularios = document.getElementById('formulario')
 const botonUser = document.getElementById('botonId')
-
 
 class Usuarios {
     constructor(nombre ,apellido,alias,scoreJuego){
@@ -251,13 +272,14 @@ class Usuarios {
     }
 }
 let usuariosGuardados =[]
-console.log()
+
 
 //operador Ternario
 localStorage.getItem('Users') ? usuariosGuardados =JSON.parse(localStorage.getItem('Users')) : localStorage.setItem('Users', JSON.stringify(usuariosGuardados))
 
 formularios.addEventListener('submit',(e) => {
     e.preventDefault()
+    agregarSonido.play()
 
     let nombre = document.getElementById('nombreId').value
     let apellido = document.getElementById('apellidoId').value
@@ -269,9 +291,9 @@ formularios.addEventListener('submit',(e) => {
 
     localStorage.setItem('Users', JSON.stringify(usuariosGuardados))
     formularios.reset()
-    table.innerHTML =""
-     usuariosGuardados.forEach((usuariosEnArray,indice,array)=>{
-         console.log(array)
+    table.innerHTML +=""
+     usuariosGuardados.forEach((usuariosEnArray,indice)=>{
+        
         table.innerHTML +=`<tbody>
                                 <td id="usuario${indice}" class="th">${usuariosEnArray.nombre}</td>
                                 <td id="usuario${indice}" class="th">${usuariosEnArray.apellido}</td>
@@ -279,6 +301,21 @@ formularios.addEventListener('submit',(e) => {
                                 <td id="usuario${indice}" class="th">${usuariosEnArray.scoreJuego}</td>
                             </tbody>`
      })
+})
+
+//fetch y asincronia
+fetch('/usuarios.json')
+.then(promesa => promesa.json())
+.then(datos => {
+  datos.forEach((usuariosDatos,indiceJ)=>{
+    
+    table2.innerHTML +=`<tbody>
+                            <td id="usuario${indiceJ}" class="th">${usuariosDatos.nombreJ}</td>
+                            <td id="usuario${indiceJ}" class="th">${usuariosDatos.apellidoJ}</td>
+                            <td id="usuario${indiceJ}" class="th">${usuariosDatos.aliasJ}</td>
+                            <td id="usuario${indiceJ}" class="th">${usuariosDatos.scoreJ}</td>
+                        </tbody>`                           
+  })
 })
 
 

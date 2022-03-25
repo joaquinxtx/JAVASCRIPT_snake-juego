@@ -1,0 +1,27 @@
+[
+    {
+        "nombreJ":"Juan",
+        "apellidoJ":"gutierrez",
+        "aliasJ":"killer",
+        "scoreJ":40
+    },
+    {
+        "nombreJ":"Fernanda",
+        "apellidoJ":"ochoa",
+        "aliasJ":"poc78",
+        "scoreJ":58
+    },
+    {
+        "nombreJ":"Santiago",
+        "apellidoJ":"Perez",
+        "aliasJ":"pollo frito",
+        "scoreJ":35
+    },
+    {
+        "nombreJ":"Lucas",
+        "apellidoJ":"Saldivia",
+        "aliasJ":"smok24",
+        "scoreJ":43
+    }
+    
+]
