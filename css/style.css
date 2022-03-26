@@ -53,7 +53,7 @@ header{
 }
 .navItem{ 
     padding: 10px;
-    font-size: 0.5rem;
+    font-size: 0.4rem;
     color: rgb(86, 219, 45); ;
     text-decoration: none;
     justify-items: flex-end;

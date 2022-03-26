@@ -1,5 +1,5 @@
 const canvas =document.getElementById('canvas');
-const ctx=canvas.getContext('2d')  
+const ctx=canvas.getContext("2d")  
 
 class SnakePartes{
   constructor(x,y){
@@ -305,7 +305,7 @@ formularios.addEventListener('submit',(e) => {
 
 //fetch y asincronia
 fetch('/usuarios.json')
-.then(promesa => promesa.json())
+.then(promise => promise.json())
 .then(datos => {
   datos.forEach((usuariosDatos,indiceJ)=>{
     
