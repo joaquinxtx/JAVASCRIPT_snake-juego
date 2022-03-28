@@ -304,11 +304,16 @@ formularios.addEventListener('submit',(e) => {
 })
 
 //fetch y asincronia
-fetch('/usuarios.json')
-.then(promise => promise.json())
-.then(datos => {
-  datos.forEach((usuariosDatos,indiceJ)=>{
-    
+
+
+async function mostrarUsusario (){
+  let promesa = await fetch('./json/usuarios.json')
+  let datosJSON=await promesa.json()
+  return datosJSON
+}
+let datos = mostrarUsusario()
+datos.then(data=>{
+  data.forEach((usuariosDatos,indiceJ)=>{  
     table2.innerHTML +=`<tbody>
                             <td id="usuario${indiceJ}" class="th">${usuariosDatos.nombreJ}</td>
                             <td id="usuario${indiceJ}" class="th">${usuariosDatos.apellidoJ}</td>
