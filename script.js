@@ -291,7 +291,7 @@ formularios.addEventListener('submit',(e) => {
 
     localStorage.setItem('Users', JSON.stringify(usuariosGuardados))
     formularios.reset()
-    table.innerHTML +=""
+    table.innerHTML =""
      usuariosGuardados.forEach((usuariosEnArray,indice)=>{
         
         table.innerHTML +=`<tbody>
